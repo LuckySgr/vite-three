@@ -21,12 +21,22 @@ onMounted(() => {
     renderer.setSize(container.innerWidth, container.innerHeight);
     container.appendChild(renderer.domElement);
 
+    // 坐标轴 红色代表 X 轴. 绿色代表 Y 轴. 蓝色代表 Z 轴.
+    const axesHelper = new THREE.AxesHelper(50);
+    scene.add(axesHelper);
+
     // 几何体
     const geometry = new THREE.BoxGeometry(10, 10, 10);
+    // 材质
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    // 网格
     const cube = new THREE.Mesh(geometry, material);
+    // 添加到场景
     scene.add(cube);
+    // 移动相机位置
     camera.position.z = 20;
+
+    // 动画
     const animate = () => {
         requestAnimationFrame(animate);
         cube.rotation.x += 0.01;
