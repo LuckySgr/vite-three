@@ -31,10 +31,12 @@ onMounted(() => {
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     // 网格
     const cube = new THREE.Mesh(geometry, material);
+    //设置网格模型在三维空间中的位置坐标，默认是坐标原点
+    cube.position.set(20, 0, 0);//x轴200位置
     // 添加到场景
     scene.add(cube);
     // 移动相机位置
-    camera.position.z = 20;
+    camera.position.z = 50;
 
     // 动画
     const animate = () => {
